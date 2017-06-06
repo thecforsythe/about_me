@@ -26,7 +26,7 @@ console.log('Forth answer stored as: ' + question[3]);
 question[4] = prompt('Do I have 6 siblings?');
 console.log('Fifth answer stored as: ' + question[4]);
 
-getLowerCase();
+getLowerCase(question);
 checkAnswer(question);
 
 function getLowerCase(question) {
@@ -37,7 +37,7 @@ function getLowerCase(question) {
 }
 
 //This function checks user answer and displays it, as well as whether the answer is true or false
-function checkAnswer(question) {
+function checkAnswer(questionLowerCase) {
   var isAnswerCorrect = [];
   for(var i = 0; i <= 4; i++) {
     if (questionLowerCase[i] === answer[i]) {
