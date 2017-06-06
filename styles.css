@@ -1,3 +1,14 @@
+* {
+  text-align: left;
+  font-style: normal;
+  background-color: white;
+}
+
 body {
-  background: gray;
+  background: red;
+}
+
+p {
+  font-size: 15px;
+  font-family: Arial;
 }
