@@ -50,3 +50,5 @@ function checkAnswer(questionLowerCase) {
     }
   }
 }
+
+function displayScore()
