@@ -15,7 +15,6 @@ function runGame() {
     'What is my lucky number?',
     'Name one of the two sports I enjoy the most.'
   ];
-  var answers = [];
   var userGuesses = [];
   var answerCorrect = ['no', //Answer 1
     'yes', //Answer 2
@@ -26,40 +25,41 @@ function runGame() {
     'running', //Answer 7
     'frisbee' //Also answer 7
   ];
-  var data = [
-    questions,
-    answers,
-    userGuesses,
-    answerCorrect
-  ];
 
   var userName = prompt('First, what is your name?');
+
   console.log('User name is: ' + userName);
+
+  //Loop displays questions and collects answer
   for (var i = 0; i < questions.length; i++) {
-//Question 1
     userGuesses[i] = prompt(questions[i]);
-    console.log('Question: ' + questions[i]);
+    console.log('Question ' + (i + 1) + ': ' + questions[i]);
     console.log('Answer stored as: ' + userGuesses[i]);
   }
 
-  getLowerCase(userGuesses);
-  checkAnswer(question);
+  getLowerCase();
+  checkAnswer();
   displayScore();
 
+  var userGuessesLowerCase = [];
   function getLowerCase() {
-    var userGuessesLowerCase = [];
     for (var j = 0; j < questions.length; j++) {
-      userGuessesLowerCase[j] = userGuesses[j].toLowerCase();
+      if (userGuesses[j] !== null) {
+        userGuessesLowerCase[j] = userGuesses[j].toLowerCase();
+      } else {
+        return userGuessesLowerCase[j] = '';
+      }
     }
     return userGuessesLowerCase;
   }
 
-//This function checks user answer is true or false
-  function checkAnswer(questionLowerCase) {
+//This function checks user answer is true or false, then returns out a score
+  function checkAnswer(userGuessesLowerCase, answerCorrect) {
     var isAnswerCorrect = [];
     var score = 0;
-    for(var i = 0; i <= question.length; i++) {
-      if (questionLowerCase[i] === answerKey[i]) {
+    for(var i = 0; i <= questions.length; i++) {
+      console.log('userGuessesLowerCase');
+      if (userGuessesLowerCase[i] === answerCorrect[i]) {
         isAnswerCorrect = true;
         console.log('Answer #' + (i + 1) + ' is correct.');
         return score++;
@@ -69,10 +69,11 @@ function runGame() {
         console.log('Answer #' + (i + 1) + ' is incorrect.');
       }
     }
+    return score;
   }
 
   function displayScore(score) {
     alert('You got ' + score + ' questions correct!');
   }
-  game = confirm('');
+  game = confirm('Thank you ' + userName + ' for playing. Would you like to play again?');
 }
