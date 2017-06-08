@@ -1,52 +1,88 @@
 'use strict';
 
-alert('Would you like to play a game?');
-var userName = prompt('First, what is your name?');
+var userName = prompt('What is your name?');
+console.log('User name is: ' + userName);
+var game = confirm('Welcome ' + userName + '! Would you like to play a game?');
+var questions = ['Am I 20 years old?',
+  'Did I used to be an electrician?',
+  'Is DeltaV my first exposure to programming?',
+  'Do I consider myself a morning person?',
+  'Do I have 6 siblings?',
+  'What is my lucky number?',
+  'Name one of the two sports I enjoy the most.'
+];
+var userGuesses = [];
+var answerCorrect = ['no', //Answer 1
+  'yes', //Answer 2
+  'no', //Answer 3
+  'no', //Answer 4
+  'yes', //Answer 5
+  '7', //Answer 6
+  'running', //Answer 7
+  'frisbee' //Also answer 7
+];
+var userGuessesLowerCase = [];
+var score = 0;
 
-var question = [];
-var answer = ['no' || 'n',
-  'yes' || 'y',
-  'no' || 'n',
-  'no' || 'n',
-  'yes' || 'y'];
+while (game) {
+  runGame();
+}
 
-//Question 1
-question[0] = prompt('Am I 20 years old?');
-console.log('First answer stored as: ' + question[0]);
-//Question 2
-question[1] = prompt('Did I used to be an electrician?');
-console.log('Second answer stored as: ' + question[1]);
-//Question 3
-question[2] = prompt('Is DeltaV Codeschool my first exposure to programming/web development?');
-console.log('Third answer stored as: ' + question[2]);
-//Question 4
-question[3] = prompt('Do I consider myself a morning person?');
-console.log('Forth answer stored as: ' + question[3]);
-//Question 5
-question[4] = prompt('Do I have 6 siblings?');
-console.log('Fifth answer stored as: ' + question[4]);
+function runGame() {
+  //Loop displays questions and collects answer
+  for (var i = 0; i < questions.length; i++) {
+    userGuesses[i] = prompt(questions[i]);
+    console.log('Question ' + (i + 1) + ': ' + questions[i]);
+    console.log('Answer stored as: ' + userGuesses[i]);
+    if (i === 6) {
+        //do a guessing loop?
+    }
+    if (i === 7) {
+        //do another guessing loop
+    }
+  }
 
-getLowerCase(question);
-checkAnswer(question);
+  getLowerCase();
+  normalizeAnswers();
+  checkAnswer();
+  alert(userName + ', you answered ' + score + ' out of 7 questions correctly!');
+  game = confirm('Thank you ' + userName + ' for playing. Would you like to play again?');
+  score = 0;
+}
 
-function getLowerCase(question) {
-  var questionLowerCase = [];
-  for (var j = 0; j < 4; j++) {
-    questionLowerCase[j] = question[j].toLowerCase();
+function getLowerCase() {
+  for (var j = 0; j < questions.length; j++) {
+    if (userGuesses[j] !== null) {
+      userGuessesLowerCase[j] = userGuesses[j].toLowerCase();
+    }
   }
 }
 
-//This function checks user answer and displays it, as well as whether the answer is true or false
-function checkAnswer(questionLowerCase) {
-  var isAnswerCorrect = [];
-  for(var i = 0; i <= 4; i++) {
-    if (questionLowerCase[i] === answer[i]) {
-      isAnswerCorrect;
-      console.log('Answer #' + (i + 1) + ' is correct.');
+function normalizeAnswers() {
+  console.log('Normalize is running');
+  for(var i = 0; i < questions.lenghth; i++) {
+    if (userGuesses[i] === 'y') {
+      userGuesses[i] = 'yes';
+      console.log(userGuesses[i]);
     }
-    else {
-      isAnswerCorrect = false;
-      console.log('Answer #' + (i + 1) + ' is incorrect.');
+    if (userGuesses[i] === 'n') {
+      userGuesses[i] = 'no';
+      console.log(userGuesses[i]);
+    }
+  }
+}
+
+//This function checks user answer is true or false, then returns out a score
+function checkAnswer() {
+  console.log(userGuessesLowerCase);
+  console.log(answerCorrect);
+  for(var i = 0; i < questions.length; i++) {
+    if (userGuessesLowerCase[i] == answerCorrect[i] ||
+    userGuessesLowerCase[6] === answerCorrect[7]) {
+      score++;
+      console.log('Answer #' + (i + 1) + ' is correct. Score: ' + score);
+    } else {
+      console.log('Answer #' + (i + 1) + ' is incorrect. Score: ' + score);
     }
   }
 }

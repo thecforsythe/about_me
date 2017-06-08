@@ -1,11 +1,9 @@
-* {
-  text-align: left;
-  font-style: normal;
-  background-color: white;
+body {
+  background: #4ea0e8;
 }
 
-body {
-  background: red;
+li {
+  margin-left: 20px;
 }
 
 p {
