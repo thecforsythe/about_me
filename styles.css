@@ -1,11 +1,10 @@
-* {
-  text-align: left;
-  font-style: normal;
-  background-color: white;
+body {
+  background: green;
+  margin: auto;
 }
 
-body {
-  background: red;
+li {
+  margin-left: 20px;
 }
 
 p {
