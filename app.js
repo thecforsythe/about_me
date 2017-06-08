@@ -34,13 +34,20 @@ function runGame() {
     userGuesses[i] = prompt(questions[i]);
     console.log('Question ' + (i + 1) + ': ' + questions[i]);
     console.log('Answer stored as: ' + userGuesses[i]);
+    if (i === 6) {
+        //do a guessing loop?
+    }
+    if (i === 7) {
+        //do another guessing loop
+    }
   }
 
   getLowerCase();
   normalizeAnswers();
   checkAnswer();
-  displayScore();
+  alert(userName + ', you answered ' + score + ' out of 7 questions correctly!');
   game = confirm('Thank you ' + userName + ' for playing. Would you like to play again?');
+  score = 0;
 }
 
 function getLowerCase() {
@@ -52,12 +59,15 @@ function getLowerCase() {
 }
 
 function normalizeAnswers() {
+  console.log('Normalize is running');
   for(var i = 0; i < questions.lenghth; i++) {
     if (userGuesses[i] === 'y') {
       userGuesses[i] = 'yes';
+      console.log(userGuesses[i]);
     }
     if (userGuesses[i] === 'n') {
-      userGuesses[i] === 'no';
+      userGuesses[i] = 'no';
+      console.log(userGuesses[i]);
     }
   }
 }
@@ -66,18 +76,13 @@ function normalizeAnswers() {
 function checkAnswer() {
   console.log(userGuessesLowerCase);
   console.log(answerCorrect);
-  var score = 0;
   for(var i = 0; i < questions.length; i++) {
     if (userGuessesLowerCase[i] == answerCorrect[i] ||
     userGuessesLowerCase[6] === answerCorrect[7]) {
-      console.log('Answer #' + (i + 1) + ' is correct.');
       score++;
+      console.log('Answer #' + (i + 1) + ' is correct. Score: ' + score);
     } else {
-      console.log('Answer #' + (i + 1) + ' is incorrect.');
+      console.log('Answer #' + (i + 1) + ' is incorrect. Score: ' + score);
     }
   }
-}
-
-function displayScore() {
-  alert('You got ' + score + ' questions correct!');
 }
