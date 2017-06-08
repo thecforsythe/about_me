@@ -22,6 +22,7 @@ var answerCorrect = ['no', //Answer 1
   'frisbee' //Also answer 7
 ];
 var userGuessesLowerCase = [];
+var userGuessesFinalState = [];
 var score = 0;
 
 while (game) {
@@ -59,17 +60,15 @@ function getLowerCase() {
 }
 
 function normalizeAnswers() {
-  console.log('Normalize is running');
-  for(var i = 0; i < questions.lenghth; i++) {
-    if (userGuesses[i] === 'y') {
-      userGuesses[i] = 'yes';
-      console.log(userGuesses[i]);
+  for(var i = 0; i < questions.length; i++) {
+    if (userGuessesLowerCase[i] === 'y') {
+      userGuessesFinalState[i] = 'yes';
     }
-    if (userGuesses[i] === 'n') {
-      userGuesses[i] = 'no';
-      console.log(userGuesses[i]);
+    if (userGuessesLowerCase[i] === 'n') {
+      userGuessesFinalState[i] = 'no';
     }
   }
+  console.log('Ran Normaize Function' + userGuessesFinalState);
 }
 
 //This function checks user answer is true or false, then returns out a score
@@ -77,8 +76,8 @@ function checkAnswer() {
   console.log(userGuessesLowerCase);
   console.log(answerCorrect);
   for(var i = 0; i < questions.length; i++) {
-    if (userGuessesLowerCase[i] == answerCorrect[i] ||
-    userGuessesLowerCase[6] === answerCorrect[7]) {
+    if (userGuessesFinalState[i] == answerCorrect[i] ||
+    userGuessesFinalState[6] === answerCorrect[7]) {
       score++;
       console.log('Answer #' + (i + 1) + ' is correct. Score: ' + score);
     } else {
