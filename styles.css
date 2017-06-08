@@ -1,7 +1,32 @@
-body {
-  background: #4ea0e8;
+.clear {
+  float:clear
+}
+img {
+  max-height:50px;
+  display:inline;
+}
+nav li {
+  display:inline;
+  padding: 5%;
+  width: 32%
+}
+nav {
+    width: 100%;
+    text-align:center;
+
+}
+header {
+  color:black;
+  border: 3px solid red;
+  float:clear;
+  max-height: 100px;
+
 }
 
+body {
+  background-image:url(http://media.new.mensxp.com/media/content/2016/Apr/you-wont-believe-how-incredible-sand-particles-look-under-a-microscope-980x457-1461065583_980x457.jpg); }
+}
+background: #4ea0e8;
 li {
   margin-left: 20px;
 }
