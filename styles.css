@@ -1,6 +1,11 @@
 body {
   background: #4ea0e8;
+  border: 1px solid black;
 }
+header {
+  max-width: 200px
+}
+
 
 li {
   margin-left: 20px;
@@ -9,4 +14,7 @@ li {
 p {
   font-size: 15px;
   font-family: Arial;
+}
+img {
+  max-width: 100%
 }
