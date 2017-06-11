@@ -35,13 +35,13 @@ while (game) {
 function runGame() {
   for (var i = 0; i < questions.length; i++) {
     console.log(questionNumber);
-    storeAnswers(questionNumber);
+    storeAnswers();
     console.log(userGuesses[questionNumber]);
-    getLowerCase(questionNumber);
+    getLowerCase();
     console.log(userGuesses[questionNumber]);
-    normalizeAnswers(questionNumber);
+    normalizeAnswers();
     console.log(userGuesses[questionNumber]);
-    checkAnswer(questionNumber);
+    checkAnswer();
     questionNumber++;
   }
 }
