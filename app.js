@@ -22,63 +22,73 @@ var answerCorrect = ['no', //Answer 1
   'frisbee' //Also answer 7
 ];
 var userGuessesLowerCase = [];
+var userGuessesFinalState = [];
 var score = 0;
+var questionNumber = 0;
 
 while (game) {
   runGame();
-}
-
-function runGame() {
-  //Loop displays questions and collects answer
-  for (var i = 0; i < questions.length; i++) {
-    userGuesses[i] = prompt(questions[i]);
-    console.log('Question ' + (i + 1) + ': ' + questions[i]);
-    console.log('Answer stored as: ' + userGuesses[i]);
-    if (i === 6) {
-        //do a guessing loop?
-    }
-    if (i === 7) {
-        //do another guessing loop
-    }
-  }
-
-  getLowerCase();
-  normalizeAnswers();
-  checkAnswer();
   alert(userName + ', you answered ' + score + ' out of 7 questions correctly!');
   game = confirm('Thank you ' + userName + ' for playing. Would you like to play again?');
   score = 0;
 }
 
-function getLowerCase() {
-  for (var j = 0; j < questions.length; j++) {
-    if (userGuesses[j] !== null) {
-      userGuessesLowerCase[j] = userGuesses[j].toLowerCase();
-    }
+function runGame() {
+  for (var i = 0; i < questions.length; i++) {
+    console.log(questionNumber);
+    storeAnswers();
+    console.log(userGuesses[questionNumber]);
+    getLowerCase();
+    console.log(userGuesses[questionNumber]);
+    normalizeAnswers();
+    console.log(userGuesses[questionNumber]);
+    checkAnswer();
+    questionNumber++;
   }
 }
 
+function storeAnswers() {
+//Loop displays questions and collects answer
+//   for (var i = 0; i < questions.length; i++) {
+  userGuesses[questionNumber] = prompt(questions[questionNumber]);
+  console.log('Question ' + questionNumber);
+  console.log('Answer stored as: ' + userGuesses[questionNumber]);
+  if (questionNumber === 6) {
+         //do a guessing loop?
+  }
+  if (questionNumber === 7) {
+         //do another guessing loop
+//     }
+  }
+}
+
+function getLowerCase() {
+//  for (var i = 0; i < questions.length; j++) {
+  if (userGuesses[questionNumber] !== null) {
+    userGuesses[questionNumber] = userGuesses[questionNumber].toLowerCase();
+  }
+  //}
+}
+
 function normalizeAnswers() {
-  console.log('Normalize is running');
-  for(var i = 0; i < questions.lenghth; i++) {
-    if (userGuesses[i] === 'y') {
-      userGuesses[i] = 'yes';
-      console.log(userGuesses[i]);
+  for(var i = 0; i < questions.length; i++) {
+    if (userGuessesLowerCase[i] === 'y') {
+      userGuessesFinalState[i] = 'yes';
     }
-    if (userGuesses[i] === 'n') {
-      userGuesses[i] = 'no';
-      console.log(userGuesses[i]);
+    if (userGuessesLowerCase[i] === 'n') {
+      userGuessesFinalState[i] = 'no';
     }
   }
+  console.log('Ran Normaize Function' + userGuessesFinalState);
 }
 
 //This function checks user answer is true or false, then returns out a score
 function checkAnswer() {
-  console.log(userGuessesLowerCase);
+  console.log(userGuesses);
   console.log(answerCorrect);
   for(var i = 0; i < questions.length; i++) {
-    if (userGuessesLowerCase[i] == answerCorrect[i] ||
-    userGuessesLowerCase[6] === answerCorrect[7]) {
+    if (userGuessesFinalState[i] == answerCorrect[i] ||
+    userGuessesFinalState[6] === answerCorrect[7]) {
       score++;
       console.log('Answer #' + (i + 1) + ' is correct. Score: ' + score);
     } else {
