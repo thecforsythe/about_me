@@ -2,13 +2,24 @@ body {
   border: 1px solid black;
   background-image: url("https://media.freestocktextures.com/cache/bc/fc/bcfc7b6694542e0da1a6562ee676301e.jpg");
 }
-header {
-  max-width: 500px;
-  border:
-}
+
 .headerimage {
   max-height:50px;
+  border: 2px solid black;
+  max-width: 800px;
+  background-image: url("https://media.freestocktextures.com/cache/bc/fc/bcfc7b6694542e0da1a6562ee676301e.jpg");
+  margin: auto;
+  padding: 5px;
+}
+header {
+  max-width: 800px;
+  border: 2px red solid;
+  height: 100px;
+}
+div {
+  max-height: 150px;
   display:inline;
+  border: 3px solid green;
 }
 nav li {
   display:inline;
@@ -16,14 +27,14 @@ nav li {
   width: 32%;
 }
 nav {
-    width: 100%;
-    text-align:center;
+  width: 100%;
+  text-align:center;
+  display: inline;
 
 }
 header {
   color:black;
   border: 3px solid red;
-  float:clear;
   max-height: 100px;
 }
 
@@ -31,10 +42,6 @@ li {
   margin-left: 20px;
 }
 
-p {
-  font-size: 15px;
-  font-family: Arial;
-}
 img {
-  max-width: 100%
+  max-height: 100%;
 }
